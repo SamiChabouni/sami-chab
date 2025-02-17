@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="shop.css">
+    <script src="index.js" defer></script>
+    <link rel="icon"
+        href="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-gemini-icon.png"
+        type="image/x-icon" />
+    <title>Shop</title>
+
+</head>
+
+<body>
+    <div class="nav">
+
+        <div class="logo" onclick="window.location.href='index.html'">
+            Nova <img
+                src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-gemini-icon.png"
+                alt="Nova logo">
+        </div>
+        <div class="menu"> <input type="text" placeholder="Search..." class="search">
+            <div class="containfilter">
+                <button class="active" data-name="all">Show All</button>
+                <button data-name="smartphones">Smartphones</button>
+                <button data-name="gaming">Gaming</button>
+                <button data-name="homeappliances">Home Appliances</button>
+                <button data-name="drones">Drones</button>
+                <button data-name="cameras">Cameras</button>
+                <button data-name="televisions">Televisions</button>
+                <button data-name="headphones">Headphones</button>
+                <button data-name="laptops">Laptops</button>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const filterButtons = document.querySelectorAll(".containfilter button");
+            const products = document.querySelectorAll(".product");
+           var banner = document.querySelector(".banner");
+
+            filterButtons.forEach(button => {
+                button.addEventListener("click", () => {
+                    const filterName = button.getAttribute("data-name");
+                    let hasResults = false;
+                    products.forEach(product => {
+                        const productCategory = product.getAttribute("data-category");
+
+                        if (filterName === "all" || productCategory === filterName) {
+                            product.style.display = "block";
+                            hasResults = true;
+                        } else {
+                            product.style.display = "none";
+                        }
+                    });
+
+                    if (!hasResults) {
+                        banner.innerHTML = "<h1>No results found</h1>";
+                 
+                    } else {
+                        banner.innerHTML = '';
+       
+                  
+                    }
+
+                });
+            });
+        });
+
+
+        let search = document.getElementsByClassName("search")[0];
+
+        search.addEventListener("input", function () {
+            let searchTerm = search.value.toLowerCase();
+            let products = document.querySelectorAll(".product");
+        
+            products.forEach(product => {
+                let productName = product.querySelector("h2").textContent.toLowerCase();
+                if (productName.includes(searchTerm)) {
+                    product.style.display = "block";
+                } else {
+                    product.style.display = "none";
+
+                }
+            });
+        });
+    </script>
+
+
+    <div class="products">
+        <div class="product" data-category="gaming">
+            <h2>Nintendo Switch OLED</h2>
+            <img src="https://store.ee.co.uk/images/product/uni2/DigitalContent/600x450/gf/GF6L_A9E90DDF-D31D-4C49-B795-B7EFE4449688_large.jpg"
+                alt="Nintendo Switch Display">
+            <p>$510</p>
+        </div>
+        <div class="product" data-category="gaming">
+            <h2>Xbox Series X</h2>
+            <img src="https://m.media-amazon.com/images/I/51-kkNP6OcL._AC_UF1000,1000_QL80_.jpg" alt="Xbox Series X">
+            <p>$499</p>
+        </div>
+        <div class="product" data-category="smartwatches">
+            <h2>Apple Watch Series 9</h2>
+            <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/refurb-45-nc-alum-midnight-sport-band-midnight-s9?wid=2000&hei=2000&fmt=jpeg&qlt=90&.v=1709325333040"
+                alt="Apple Watch Series 9">
+            <p>$349</p>
+        </div>
+        <div class="product" data-category="smartphones">
+            <h2>Samsung Galaxy S25</h2>
+            <img src="https://econtent.o2.co.uk/o/econtent/media/get/7ed0d447-a147-46f8-b1bb-8ac7914ffb08"
+                alt="Samsung Galaxy S25">
+            <p>$1649</p>
+        </div>
+        <div class="product" data-category="smartphones">
+            <h2>Google Pixel 9 Pro</h2>
+            <img src="https://www.dxomark.com/wp-content/uploads/medias/post-176677/Google-Pixel-9-Pro-XL_featured-image-packshot-review.png"
+                alt="Google Pixel 9 Pro">
+            <p>$399</p>
+        </div>
+        <div class="product" data-category="headphones">
+            <h2>SoundCore Earbuds</h2>
+            <img src="https://m.media-amazon.com/images/I/61e9Npl3upL.jpg" alt="SoundCore Earbuds">
+            <p>$89</p>
+        </div>
+        <div class="product" data-category="smartphones">
+            <h2>iPhone 16 Pro Max</h2>
+            <img src="https://www.dxomark.com/wp-content/uploads/drafts/post-178568/Apple-iPhone-16-Pro-Max_featured-image-packshot-review.png"
+                alt="iPhone 16 Pro Max">
+            <p>$999</p>
+        </div>
+        <div class="product" data-category="smartphones">
+            <h2>OnePlus 10</h2>
+            <img src="https://i.ebayimg.com/images/g/JsQAAOSwf5tiNoqs/s-l1200.png" alt="OnePlus 10">
+            <p>$749</p>
+        </div>
+        <div class="product" data-category="gaming">
+            <h2>PlayStation 5</h2>
+            <img src="https://m.media-amazon.com/images/I/51dfg52K-cL._AC_UF894,1000_QL80_.jpg" alt="PlayStation 5">
+            <p>$499</p>
+        </div>
+        <div class="product" data-category="gaming">
+            <h2>Xbox Series S</h2>
+            <img src="https://m.media-amazon.com/images/I/61D3AuT--xL.jpg" alt="Xbox Series S">
+            <p>$299</p>
+        </div>
+        <div class="product" data-category="homeappliances">
+            <h2>Dyson Vacuum Cleaner</h2>
+            <img src="https://lunneys.uk/pub/media/catalog/product/cache/8b1323ea8946d7bd38d8b3397269b35c/t/u/tumbnail_bd1f81f1-6432-46b8-b1b5-8860b4999625_1.jpg"
+                alt="Dyson Vacuum Cleaner">
+            <p>$599</p>
+        </div>
+        <div class="product" data-category="homeappliances">
+            <h2>Instant Pot</h2>
+            <img src="https://m.media-amazon.com/images/I/71nYYncaUUL.jpg" alt="Instant Pot">
+            <p>$99</p>
+        </div>
+        <div class="product" data-category="drones">
+            <h2>DJI Drone Air 2</h2>
+            <img src="https://droneschooluk.co.uk/wp-content/uploads/2020/04/Mavic-Air-2-Image-2.png"
+                alt="DJI Drone Air 2">
+            <p>$799</p>
+        </div>
+        <div class="product" data-category="drones">
+            <h2>Parrot Drone</h2>
+            <img src="https://m.media-amazon.com/images/I/618vFVTdcQL.jpg" alt="Parrot Drone">
+            <p>$699</p>
+        </div>
+        <div class="product" data-category="cameras">
+            <h2>Canon EOS R5</h2>
+            <img src="https://i1.adis.ws/i/canon/eos-r5_front_rf24-105mmf4lisusm_square_32c26ad194234d42b3cd9e582a21c99b"
+                alt="Canon EOS R5">
+            <p>$3899</p>
+        </div>
+        <div class="product" data-category="cameras">
+            <h2>Sony Alpha a7 III</h2>
+            <img src="https://m.media-amazon.com/images/I/517CEyCXIHL._AC_UF1000,1000_QL80_.jpg"
+                alt="Sony Alpha a7 III">
+            <p>$1999</p>
+        </div>
+        <div class="product" data-category="televisions">
+            <h2>LG Display CX</h2>
+            <img src="https://www.trustedreviews.com/wp-content/uploads/sites/7/2020/07/LG-CX-The-Dark-Knight.jpg"
+                alt="LG Display CX">
+            <p>$1499</p>
+        </div>
+        <div class="product" data-category="televisions">
+            <h2>Samsung Display Q90T</h2>
+            <img src="https://i.insider.com/5ef3916c4dca6802a92cab67?width=700" alt="Samsung Display Q90T">
+            <p>$1799</p>
+        </div>
+        <div class="product" data-category="laptops">
+            <h2>MacBook Pro 16"</h2>
+            <img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mbp16-spaceblack-select-202410?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1728916322507"
+                alt="MacBook Pro 16">
+            <p>$2399</p>
+        </div>
+        <div class="product" data-category="laptops">
+            <h2>Dell XPS 13</h2>
+            <img src="https://m.media-amazon.com/images/I/618l5x9WbcL.jpg" alt="Dell XPS 13">
+            <p>$999</p>
+        </div>
+        <div class="product" data-category="homeappliances">
+            <h2>LG GML960PYFE American Fridge</h2>
+            <img src="https://s3-eu-west-1.amazonaws.com/media.markselectrical.co.uk/item-images/zoom/GML960PYFE.alt12.jpg"
+                alt="Fidge">
+            <p>$1999</p>
+        </div>
+
+    </div>
+
+
+    <footer>
+        <div class="left">
+            <div class="logo">
+                Nova <img
+                    src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-gemini-icon.png"
+                    alt="Nova logo">
+            </div>
+        </div>
+        <div class="right">
+            <h3>Get In Touch</h3>
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="social">
+            <ul>
+                <li><a href="https://www.facebook.com" target="_blank"><img
+                            src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
+                            alt="Facebook"></a></li>
+                <li><a href="https://www.youtube.com" target="_blank"><img
+                            src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png"
+                            alt="Youtube"></a></li>
+                <li><a href="https://www.twitter.com" target="_blank"><img class="twitter"
+                            src="https://loodibee.com/wp-content/uploads/Twitter-X-Logo-300x300.png"
+                            alt="Twitter Logo"></a></li>
+            </ul>
+        </div>
+        <div class="bottom">
+            <p>&copy; 2025 Nova. All rights reserved.</p>
+
+        </div>
+    </footer>
+
+</body>
+
+</html>
